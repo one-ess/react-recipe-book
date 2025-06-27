@@ -1,0 +1,30 @@
+@use "./vars" as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: $fontFamily, sans-serif;
+  font-size: $fontSize;
+  font-weight: 700;
+  line-height: 1;
+  color: $textColor;
+  background-color: $secondaryColor;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  max-width: 1320px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.main {
+  padding: 100px 0;
+}

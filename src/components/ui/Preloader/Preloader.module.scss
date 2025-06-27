@@ -1,0 +1,17 @@
+.preloader {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 7px solid #adadad;
+  border-top-color: #7719ad;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
