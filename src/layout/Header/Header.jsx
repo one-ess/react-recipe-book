@@ -1,19 +1,31 @@
+import { Link } from "react-router-dom";
 import s from "./Header.module.scss";
-import { AppBar, Toolbar, Box, Typography, Button, Container } from "@mui/material";
+import { AppBar, Box, Typography, Button, Container } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const { activeCategory } = useSelector((state) => state.categories);
+
   return (
-    <AppBar className={s.header} position="static" color="default" elevation={1}>
-      <Toolbar>
-        <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
+    <AppBar className={s.header} elevation={3}>
+      <Container className="container">
+        <Box className={s.wrapper}>
           <Typography variant="h5" component="h1">
             React Recipe Book
           </Typography>
-          <Button variant="contained" color="primary">
+          <Box className={s.actions}>
+            <Link className={s.button} to="/" variant="contained">
+              Главная
+            </Link>
+            <Link className={s.button} to={`/catalog/${activeCategory ? activeCategory : "Beef"}`} variant="contained">
+              Каталог
+            </Link>
+          </Box>
+          <Button className={s.button} variant="contained">
             Repo
           </Button>
         </Box>
-      </Toolbar>
+      </Container>
     </AppBar>
   );
 };

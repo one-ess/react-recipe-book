@@ -3,7 +3,8 @@ import axios from "axios";
 
 const initialState = {
   categories: [],
-  isLoading: false,
+  activeCategory: "",
+  isLoadingCategories: false,
   error: null,
 };
 
@@ -19,20 +20,26 @@ export const getCategories = createAsyncThunk("category/fetchCategories", async 
 const categorySlice = createSlice({
   name: "category",
   initialState,
-  reducers: {},
+  reducers: {
+    setActiveCategory(state, action) {
+      state.activeCategory = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getCategories.pending, (state) => {
-      state.isLoading = true;
+      state.isLoadingCategories = true;
     });
     builder.addCase(getCategories.fulfilled, (state, action) => {
       state.categories = action.payload;
-      state.isLoading = false;
+      state.isLoadingCategories = false;
     });
     builder.addCase(getCategories.rejected, (state, action) => {
       state.error = action.payload;
-      state.isLoading = false;
+      state.isLoadingCategories = false;
     });
   },
 });
+
+export const { setActiveCategory } = categorySlice.actions;
 
 export default categorySlice.reducer;

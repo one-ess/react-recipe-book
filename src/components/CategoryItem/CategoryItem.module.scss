@@ -1,0 +1,33 @@
+.item {
+  width: fit-content;
+  padding: 0;
+  border: 1px solid #1976d2;
+  border-radius: 5px;
+}
+
+.itemActive {
+  background-color: #1976d2;
+
+  .title {
+    color: #fff;
+  }
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  padding: 7px;
+}
+
+.img {
+  width: 50px;
+}
+
+.title {
+  padding: 0;
+  font-size: 12px;
+  color: black;
+  text-transform: capitalize;
+}

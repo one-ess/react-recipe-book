@@ -1,12 +1,22 @@
-import { CircularProgress } from "@mui/material";
 import MainLayout from "../../layout/MainLayout";
-import CategoryList from "../CategoryList/CategoryList";
-import { useSelector } from "react-redux";
+import Details from "../Details/Details";
+import Catalog from "../Catalog/Catalog";
+
+import { Route, Routes } from "react-router-dom";
+import NotFound from "../NotFound/NotFound";
+import Home from "../Home/Home";
 
 const App = () => {
-  const { isLoading } = useSelector((state) => state.categories);
-
-  return <MainLayout>{isLoading ? <CircularProgress /> : <CategoryList />}</MainLayout>;
+  return (
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path="catalog/:category" element={<Catalog />} />
+        <Route path="meal/:meal" element={<Details />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
+  );
 };
 
 export default App;

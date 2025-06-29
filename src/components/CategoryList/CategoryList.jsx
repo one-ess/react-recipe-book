@@ -1,22 +1,16 @@
-import { List, ListItem } from "@mui/material";
-import { useEffect } from "react";
-import { getCategories } from "../../store/category/category.slice";
-import { useDispatch, useSelector } from "react-redux";
+import { List } from "@mui/material";
+import { useSelector } from "react-redux";
+import CategoryItem from "../CategoryItem/CategoryItem";
+
+import s from "./CategoryList.module.scss";
 
 const CategoryList = () => {
   const { categories } = useSelector((state) => state.categories);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (categories.length === 0) {
-      dispatch(getCategories());
-    }
-  }, []);
 
   return (
-    <List>
+    <List className={s.list}>
       {categories.map((category) => {
-        return <ListItem key={category.idCategory}>{category.strCategory}</ListItem>;
+        return <CategoryItem key={category.idCategory} {...category}></CategoryItem>;
       })}
     </List>
   );

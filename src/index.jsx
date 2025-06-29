@@ -7,16 +7,15 @@ import { store } from "./store/store.js";
 import App from "./components/App/App.jsx";
 
 import "./index.scss";
-import { createTheme, ThemeProvider } from "@mui/material";
 
-const theme = createTheme();
+import { Button, StyledEngineProvider } from "@mui/material";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <ThemeProvider theme={theme}>
+    <StyledEngineProvider injectFirst>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </ThemeProvider>
+    </StyledEngineProvider>
   </Provider>
 );
