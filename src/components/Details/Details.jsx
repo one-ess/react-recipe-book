@@ -1,14 +1,26 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import s from "./Details.module.scss";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { CircularProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import Paper from "@mui/material/Paper";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getDetails } from "../../store/details/details.slice";
 
 const Details = () => {
   const { details } = useSelector((state) => state.details);
   const meal = details[0];
 
+  const params = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!details.length) {
+      dispatch(getDetails(params.meal));
+    }
+  }, []);
+
   if (!meal) {
-    return <div>Loading...</div>;
+    return <CircularProgress />;
   }
 
   const getIngredients = () => {
