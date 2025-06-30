@@ -10,7 +10,12 @@ const initialState = {
 export const getDetails = createAsyncThunk("details/fetchDetails", async (mealId, thunkAPI) => {
   try {
     const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
-    return response.data.meals;
+
+    if (!response.data.meals || response.data.meals === "Invalid ID") {
+      return thunkAPI.rejectWithValue("Не удалось найти детальную страницу рецепта");
+    } else {
+      return response.data.meals;
+    }
   } catch {
     return thunkAPI.rejectWithValue("Не удалось выполнить запрос");
   }
@@ -22,9 +27,11 @@ const detailsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getDetails.pending, (state) => {
+      state.error = null;
       state.isLoadingDetails = true;
     });
     builder.addCase(getDetails.fulfilled, (state, action) => {
+      state.error = null;
       state.details = action.payload;
       state.isLoadingDetails = false;
     });

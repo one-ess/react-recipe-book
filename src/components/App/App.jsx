@@ -1,15 +1,12 @@
 import MainLayout from "../../layout/MainLayout";
-import Details from "../Details/Details";
-import Catalog from "../Catalog/Catalog";
+import Details from "../../pages/Details/Details";
+import Catalog from "../../pages/Catalog/Catalog";
+import NotFound from "../../pages/NotFound/NotFound";
+import Home from "../../pages/Home/Home";
 
 import { Route, Routes } from "react-router-dom";
-import NotFound from "../NotFound/NotFound";
-import Home from "../Home/Home";
-import { CircularProgress } from "@mui/material";
-import { useSelector } from "react-redux";
 
 const App = () => {
-  const { isLoadingDetails } = useSelector((state) => state.details);
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>

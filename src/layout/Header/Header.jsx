@@ -14,10 +14,10 @@ const Header = () => {
             React Recipe Book
           </Typography>
           <Box className={s.actions}>
-            <Link className={s.button} to="/" variant="contained">
+            <Link className={s.link} to="/" variant="contained">
               Главная
             </Link>
-            <Link className={s.button} to={`/catalog/${activeCategory ? activeCategory : "Beef"}`} variant="contained">
+            <Link className={s.link} to={`/catalog/${activeCategory ? activeCategory : "Beef"}`} variant="contained">
               Каталог
             </Link>
           </Box>

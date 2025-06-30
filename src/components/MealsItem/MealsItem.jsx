@@ -1,9 +1,9 @@
 import { Button, Card, CardMedia, ListItem, Typography } from "@mui/material";
-import s from "./MealsItem.module.scss";
 import { useDispatch } from "react-redux";
 import { getDetails } from "../../store/details/details.slice";
 import { useNavigate } from "react-router-dom";
 
+import s from "./MealsItem.module.scss";
 const MealsItem = (props) => {
   const { idMeal, strMealThumb, strMeal } = props;
   const dispatch = useDispatch();

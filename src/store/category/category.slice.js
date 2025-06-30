@@ -17,6 +17,18 @@ export const getCategories = createAsyncThunk("category/fetchCategories", async 
   }
 });
 
+export const loggerMiddleware = (store) => (next) => (action) => {
+  const prevState = store.getState();
+  const result = next(action);
+  const nextState = store.getState();
+
+  console.log("Previous state:", prevState);
+  console.log("Action:", action);
+  console.log("Next state:", nextState);
+
+  return result;
+};
+
 const categorySlice = createSlice({
   name: "category",
   initialState,

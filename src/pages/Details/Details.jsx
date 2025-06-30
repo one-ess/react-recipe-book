@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { getDetails } from "../../store/details/details.slice";
 
 const Details = () => {
-  const { details } = useSelector((state) => state.details);
+  const { details, error } = useSelector((state) => state.details);
   const meal = details[0];
 
   const params = useParams();
@@ -19,8 +19,12 @@ const Details = () => {
     }
   }, []);
 
-  if (!meal) {
+  if (!error && !meal) {
     return <CircularProgress />;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
   }
 
   const getIngredients = () => {
@@ -66,14 +70,7 @@ const Details = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <iframe
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}`}
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
-      ></iframe>
+      <iframe width="560" height="315" src={`https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
     </div>
   );
 };

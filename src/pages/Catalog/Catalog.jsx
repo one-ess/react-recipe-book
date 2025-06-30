@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import CategoryList from "../CategoryList/CategoryList";
-import MealsList from "../MealsList/MealsList";
+import CategoryList from "../../components/CategoryList/CategoryList";
+import MealsList from "../../components/MealsList/MealsList";
 import { CircularProgress } from "@mui/material";
 import { useEffect } from "react";
 import { getMeals } from "../../store/meals/meals.slice";

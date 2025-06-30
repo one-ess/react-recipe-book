@@ -1,8 +1,8 @@
 import { List } from "@mui/material";
 import { useSelector } from "react-redux";
+import MealsItem from "../MealsItem/MealsItem";
 
 import s from "./MealsList.module.scss";
-import MealsItem from "../MealsItem/MealsItem";
 
 const MealsList = () => {
   const { meals } = useSelector((state) => state.meals);

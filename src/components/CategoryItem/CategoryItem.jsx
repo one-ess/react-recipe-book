@@ -1,8 +1,9 @@
 import { ButtonBase, CardMedia, ListItem, Typography } from "@mui/material";
-import s from "./CategoryItem.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setActiveCategory } from "../../store/category/category.slice";
+
+import s from "./CategoryItem.module.scss";
 
 const CategoryItem = (props) => {
   const { strCategoryThumb, strCategory } = props;
