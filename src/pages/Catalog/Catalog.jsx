@@ -4,7 +4,7 @@ import MealsList from "../../components/MealsList/MealsList";
 import { CircularProgress } from "@mui/material";
 import { useEffect } from "react";
 import { getMeals } from "../../store/meals/meals.slice";
-import { getCategories, setActiveCategory } from "../../store/category/category.slice";
+import { getCategories } from "../../store/category/category.slice";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Catalog = () => {
@@ -24,21 +24,11 @@ const Catalog = () => {
     if (!categories.length || activeCategory) return;
 
     const category = categories.find((category) => category.strCategory === params.category);
-    const categoryFromURL = category ? category.strCategory : "";
+    const categoryFromURL = category ? category.strCategory : "Beef";
 
-    if (categoryFromURL) {
-      dispatch(setActiveCategory(categoryFromURL));
-    } else {
-      dispatch(setActiveCategory("Beef"));
-      navigate("/catalog/Beef");
-    }
+    dispatch(getMeals(categoryFromURL));
+    navigate(`/catalog/${categoryFromURL}`);
   }, [categories]);
-
-  useEffect(() => {
-    if (activeCategory) {
-      dispatch(getMeals(activeCategory));
-    }
-  }, [activeCategory]);
 
   return (
     <>

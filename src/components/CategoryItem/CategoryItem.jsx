@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { setActiveCategory } from "../../store/category/category.slice";
 
 import s from "./CategoryItem.module.scss";
+import { getMeals } from "../../store/meals/meals.slice";
 
 const CategoryItem = (props) => {
   const { strCategoryThumb, strCategory } = props;
@@ -13,7 +14,7 @@ const CategoryItem = (props) => {
   const navigate = useNavigate();
 
   const handleCategoryClick = (strCategory) => {
-    dispatch(setActiveCategory(strCategory));
+    dispatch(getMeals(strCategory));
     navigate(`/catalog/${strCategory}`);
   };
 
